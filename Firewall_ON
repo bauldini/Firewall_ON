@@ -1,0 +1,9 @@
+
+#!/bin/bash
+
+out=$(curl ipinfo.io/ip)
+
+iptables -A INPUT -p tcp --dport 8000 -s $out -j ACCEPT
+iptables -A INPUT -p tcp --dport 8000 -j DROP
+
+echo "Firewall is ON"

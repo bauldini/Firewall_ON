@@ -1,0 +1,14 @@
+#!/bin/bash
+
+#out=$(curl ipinfo.io/ip)
+
+echo "Whats your IP ?"
+read ip
+
+echo "Which Port are you securing ?"
+read port
+
+iptables -A INPUT -p tcp --dport $port -s $ip -j ACCEPT
+iptables -A INPUT -p tcp --dport $port -j DROP
+
+echo "Firewall is ON"
